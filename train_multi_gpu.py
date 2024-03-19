@@ -1,5 +1,5 @@
 """
-version 3.0 双向lstm训练，时间减近似一半，数据输入结构不变，但是解码阶段各时间步输入状态有变
+version 3.0
 use keras to generate a seq2seq model using TF2.3
 train the model by batch
 the model used here is from define_models.py
@@ -17,7 +17,6 @@ max_input_len = 24
 max_target_len = 24
 batch_size = 64
 epochs = 150
-# 256维神经元
 latent_dim = 256
 
 def build_parser():
@@ -31,7 +30,7 @@ def build_parser():
     args = parser.parse_args()
 
     return args
-# 解析运行参数
+    
 parsed_args = build_parser()
 data_dir = parsed_args.data_dir
 long_corpus = data_dir + parsed_args.long_corpus
@@ -121,7 +120,7 @@ if gpus:
 
 
 else:
-    print("没有可用的GPU设备。")
+    print("No GPU.")
 
 
 
