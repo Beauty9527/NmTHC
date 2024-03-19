@@ -43,7 +43,7 @@ def models(input_vocab_size, target_vocab_size, latent_dim):  # the size of inpu
 
 def embedding_models(input_vocab_size, target_vocab_size, latent_dim):
 
-    encoder_inputs = Input(shape=(None,))  # 定义模型输入维度
+    encoder_inputs = Input(shape=(None,))  
     encoder_embedding = Embedding(input_dim=input_vocab_size, output_dim=200)(encoder_inputs)  #
 
     encoder_lstm = LSTM(units=latent_dim, return_state=True)
