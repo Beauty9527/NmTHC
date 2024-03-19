@@ -34,14 +34,10 @@ python split_pileup3.0.py --data-dir ./ --whole-mpileup mpileup_genome.pileup --
 # travel the files in the dir
 cd split_mpileup
 for i in {0..999}; do   # this is related to the split-rate
-    # 构建文件名
     filename="chunk_${i}.mpileup"
-
-    # 检查文件是否存在
     if [ -e "$filename" ]; then
         echo "Processing: $filename"
 
-        # 在这里执行你的操作，例如使用文件作为输入
 	python ts_corpus2.0.py --data_dir ./ --input_file chunk_${i}.mpileup --uncovered_file un_reads.fasta --covered_long_regions c_long_regions.fasta --covered_label_regions c_label_regions.fasta --uncovered_long_regions un_long_regions.fasta --uncovered_label_regions un_label_regions.fasta --long_corpus long_corpus.txt --label_corpus label_corpus.txt
 	python train_multi_gpu.py --data-dir ./ --long-corpus long_corpus.txt --label-corpus label_corpus.txt --check-point-path weight/cp.ckpt --model-hdf5-path weight/model.h5
 	python predict_bi_lstm.py --gpu 0 --data-dir ./ --long-corpus long_corpus.txt --label-corpus label_corpus.txt --check-point-path weight/cp.ckpt --model-hdf5-path weight/model.h5 --output predict_${i}.fasta
