@@ -1,5 +1,5 @@
-# NMTHC
-NMTHC：A hybrid error correction method based on a gener-ative Neural Machine Translation model    
+# NmTHC
+NmTHC：A hybrid error correction method based on a generative Neural Machine Translation model with transfer learning    
     
 run the sh file "run_nmthc.sh"  to correct the long reads    
     
